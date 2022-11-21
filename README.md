@@ -3,7 +3,7 @@ Brainfuck with more syntax
 
 Info
 -
-Better Brainfuck (BBf or Better Bf) is a Brainfuck derivative with additonal syntax allowing for slighty cleaner and more readable code. BBf is a cell-based esoteric language with 65536 cells that can hold a max value of 255.
+Better Brainfuck (also called Better-Bf) is a Brainfuck derivative with additonal syntax allowing for slighty cleaner and more readable code. Better-Bf is a cell-based esoteric language with 65536 cells that can hold a max value of 255. Better-Bf also has a single unsigned 8 bit "cloud cell".
 
 | Brainfuck Syntax | Description |
 | --- | --- |
@@ -13,17 +13,17 @@ Better Brainfuck (BBf or Better Bf) is a Brainfuck derivative with additonal syn
 | - | Decrement current cell value by 1 |
 | , | Set current cell value equal to user input as 8 bit int |
 | . | Output current cell as ASCII |
-| [ | To-Do |
-| ] | To-Do |
+| (Not Implemented Currently) [ | To-Do |
+| (Not Implemented Currently)] | To-Do |
 
 
-| Additonal Better-bf Syntax | Description |
+| Additonal Better-Bf Syntax | Description |
 | --- | --- |
-| * | Multiply current cell value by itself and next cell value then set next cell to 0 |
-| / | Divide current cell value by itself and next cell value then set next cell to 0 (rounds down) |
+| * | Multiply current cell value by next cell value then set next cell to 0 |
+| / | Divide current cell value by next cell value then set next cell to 0 (rounds down) |
 | ~ | Set current cell to 0 |
-| ^ | Copy current cell value |
-| v | Paste current cell value |
+| ^ | Copy current cell value to the "cloud cell"|
+| v | Paste "cloud cell" value to current cell|
 | @ | Jump to cell equal to current cell value |
 | # | Jump to cell 0 |
 | & | Output current cell value as integer |

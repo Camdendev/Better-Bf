@@ -1,8 +1,8 @@
 #makefile for BBf
 #Created by Camdendev on 11/20/2022
 
-SRCS = bf.c
-EXE = bf
+SRCS = bbf.c
+EXE = better-bf
 CFLAGS = -Wall
 LDFLAGS =
 LIBS =
@@ -20,4 +20,4 @@ clean:
 	-rm -f $(EXE)
 	-rm -f $(OBJS)
 	
-main.o: src/bf.c src/bf.h
+bbf.o: bbf.c bbf.h

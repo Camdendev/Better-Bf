@@ -1,49 +1,19 @@
-//bf.c
+//bbf.c
 //Created by Camdendev on 11/20/2022
-
-/*
-Info
-----
-Better Brainf*** (BBf) is a brainfuck derivative with additonal syntax.
-These addition syntax should allow for cleaner and slightly more readable code.
-BBf has an array of 65536 cells, each cell can have a value of 0-255.
-The '[' and ']' syntax have been excluded.
-
-Brainf*** Syntax
------------------
-> | Move pointer to the right
-< | Move pointer to the left
-+ | Increment current cell value by 1
-- | Decrement current cell value by 1
-, | Set current cell value equal to user input as 8 bit int
-. | Output current cell value as ASCII
-[ | TO-DO
-] | TO-DO
-
-New BBf Syntax
----------------
-* | Multiply current cell value by itself and next cell value then set next cell to 0
-/ | Divide current cell value by itself and next cell value then set next cell to 0 (rounds down)
-~ | Set current cell to 0
-^ | Copy current cell value
-v | Paste current cell value
-@ | Jump to cell equal to current cell value
-# | Jump to cell 0
-& | Output current cell value as integer
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "bf.h"
+#include <math.h>
+#include "bbf.h"
 
 uint8_t cells[65536];
 uint8_t cloud;
 uint16_t ptr;
 
 void execute(char * program) {
-    for(int i=0;program[i]!=0;i++) {
-        switch(program[i]) {
+    for(int pc=0;program[pc]!=0;pc++) {
+        switch(program[pc]) {
             case '>':
                 ++ptr;
                 break;
@@ -63,15 +33,17 @@ void execute(char * program) {
                 putchar(cells[ptr]);
                 break;
             case '[':
+                printf("the '[' syntax is a WIP\n");
                 break;
             case ']':
+                printf("the ']' syntax is a WIP\n");
                 break;
             case '*':
                 cells[ptr] *= cells[ptr+1];
                 cells[ptr+1] = 0;
                 break;
             case '/':
-                cells[ptr] /= cells[ptr+1];
+                cells[ptr] /= floor(cells[ptr+1]);
                 cells[ptr+1] = 0;
                 break;
             case '~':
@@ -98,10 +70,20 @@ void execute(char * program) {
     }
 }
 
-int main(void) {
-    char * input = ">>+++++<<++@&";
+int main(int argc, char **argv) {
+    char input[32768];
 
-    execute(input);
+    if(argc != 2) {
+        printf("Usage: ./better-bf <FILENAME>");
+    } else {
+        FILE * file = fopen(argv[1], "r");
+        if(file != NULL) {
+            while(fgets(input, sizeof(input), file) != NULL) {
+                execute(input);
+            }
+        }
 
+        fclose(file);
+    }
     return 0;
 }
