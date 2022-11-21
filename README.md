@@ -13,8 +13,8 @@ Better Brainfuck (also called Better-Bf) is a Brainfuck derivative with additona
 | - | Decrement current cell value by 1 |
 | , | Set current cell value equal to user input as 8 bit int |
 | . | Output current cell as ASCII |
-| (Not Implemented Currently) [ | To-Do |
-| (Not Implemented Currently)] | To-Do |
+| (Not Implemented Currently) [ | Jump past the matching ']' if the current cell is 0  |
+| (Not Implemented Currently) ] | Jump back to the matching '[' if the current is nonzero |
 
 
 | Additonal Better-Bf Syntax | Description |
